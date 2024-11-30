@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Collection</title>
+</head>
+<body>
+
+<script>
+    // Fetch the JSON data from the books.json file
+    fetch('books.json')
+        .then(response => response.json())
+        .then(data => {
+            // (a) The title of the first book
+            console.log("Title of the first book:", data.books[0].title);
+
+            // (b) The author of the second book
+            console.log("Author of the second book:", data.books[1].author);
+
+            // (c) The genres of all books
+            data.books.forEach((book, index) => {
+                console.log(`Genres of Book ${index + 1}:`, book.genres.join(", "));
+            });
+        })
+        .catch(error => console.error('Error fetching the JSON data:', error));
+</script>
+
+</body>
+</html>
